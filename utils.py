@@ -155,12 +155,19 @@ def verifier_game_over(team, vague):
         return True
     
     return False
+
 vague = -1
 def afficher_score():
     score = get_vague() * 1000
     print("*******************************")
     print(f"*** Votre score est de {score} ***")
     print("*******************************")
+    return score
+
+def get_score():
+    score = get_vague() * 1000
+    return score
+
 
 def add_vague(n):
     global vague
@@ -168,3 +175,11 @@ def add_vague(n):
 
 def get_vague():
     return vague
+
+
+def score_register(pseudo, score):
+    game_score = {"pseudo": pseudo, "score" : score}
+    client = MongoClient("mongodb://localhost:27017/")
+    db = client["rpg_game"]
+    collectionScore = db["Score"]
+    collectionScore.insert_many([{"pseudo": pseudo, "score" : score }])

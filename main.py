@@ -16,8 +16,9 @@ statut = afficher_team(team, pseudo)
 # Exemple : génération de monstres pour les vagues
 monstre = generer_monstre(monsters, vague)
 
-while True :
-    systeme_de_combat(team, pseudo)
-    break
+systeme_de_combat(team, pseudo)
 #affichage du score final par palier de 1000
 afficher_score()
+score = get_score()
+
+score_register(pseudo, score)
